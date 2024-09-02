@@ -1,0 +1,32 @@
+[
+    {
+      "title": "Message from Rajan",
+      "content": "Hello buddy, how are you doing today?",
+      "received": "7 minutes ago"
+    },
+    {
+      "title": "Message from Pandey",
+      "content": "You are awesome , I really liked your recent post!",
+      "received": "7 hours ago"
+    },
+    {
+      "title": "Message from UserRajan",
+      "content": "Recommend me some movies",
+      "received": "7 day ago"
+    },
+    {
+      "title": "Message from RajanR",
+      "content": "Hello buddy, how are you doing today?",
+      "received": "7 minutes ago"
+    },
+    {
+      "title": "Message from PandeyRJ",
+      "content": "You are awesome , I really liked your recent post!",
+      "received": "7 hours ago"
+    },
+    {
+      "title": "Message from UserPandey",
+      "content": "Recommend me some movies",
+      "received": "7 day ago"
+    }
+  ]

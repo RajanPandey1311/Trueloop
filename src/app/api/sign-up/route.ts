@@ -26,10 +26,10 @@ export async function POST(request: Request) {
     }
 
     const existingUserByEmail = await UserModel.findOne({ email });
-    const verifyCode = Math.floor(100000 + Math.random() * 900000).toString();
+    let verifyCode = Math.floor(100000 + Math.random() * 900000).toString();
 
     if (existingUserByEmail) {
-      if (existingUserByEmail.isVerified) {
+      // if (existingUserByEmail.isVerified)
         return Response.json(
           {
             success: false,
@@ -37,13 +37,13 @@ export async function POST(request: Request) {
           },
           { status: 400 }
         );
-      } else {
-        const hasedPassword = await bcrypt.hash(password, 10);
-        existingUserByEmail.password = hasedPassword;
-        existingUserByEmail.verifyCode = verifyCode;
-        existingUserByEmail.verifyCodeExpiry = new Date(Date.now() + 3600000);
-        await existingUserByEmail.save();
-      }
+      // } else {
+      //   const hasedPassword = await bcrypt.hash(password, 10);
+      //   existingUserByEmail.password = hasedPassword;
+      //   existingUserByEmail.verifyCode = verifyCode;
+      //   existingUserByEmail.verifyCodeExpiry = new Date(Date.now() + 3600000);
+      //   await existingUserByEmail.save();
+      // }
     } else {
       const hasedPassword = await bcrypt.hash(password, 10);
       const expiryDate = new Date();
@@ -63,7 +63,6 @@ export async function POST(request: Request) {
       await newUser.save();
     }
 
-    // send verification email
     const emailResponse = await sendVerificationEmail(
       email,
       username,
@@ -96,7 +95,7 @@ export async function POST(request: Request) {
     return Response.json(
       {
         success: false,
-        message: "Error registering user",
+        message: "Error registering user, Try with different user-name",
       },
       {
         status: 500,

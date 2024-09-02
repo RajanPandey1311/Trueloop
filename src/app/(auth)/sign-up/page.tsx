@@ -98,7 +98,7 @@ export default function SignUpForm() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-800">
+    <div className="flex justify-center items-center min-h-screen bg-teal-700">
       <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md">
         <div className="text-center">
           <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-6">
@@ -120,6 +120,7 @@ export default function SignUpForm() {
                       field.onChange(e);
                       debounced(e.target.value);
                     }}
+                    placeholder='Enter unique username'
                   />
                   {isCheckingUsername && <Loader2 className="animate-spin" />}
                   {!isCheckingUsername && usernameMessage && (
@@ -143,8 +144,8 @@ export default function SignUpForm() {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Email</FormLabel>
-                  <Input {...field} name="email" />
-                  <p className='text-muted text-gray-600 text-sm'>We will send you a verification code</p>
+                  <Input {...field} name="email" placeholder='email' />
+                  <p className='text-gray-500 text-sm'>We will send you a verification code</p>
                   <FormMessage />
                 </FormItem>
               )}
@@ -156,7 +157,7 @@ export default function SignUpForm() {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Password</FormLabel>
-                  <Input type="password" {...field} name="password" />
+                  <Input type="password" {...field} name="password" placeholder='password'/>
                   <FormMessage />
                 </FormItem>
               )}
@@ -176,7 +177,7 @@ export default function SignUpForm() {
         <div className="text-center mt-4">
           <p>
             Already a member?{' '}
-            <Link href="/sign-in" className="text-blue-600 hover:text-blue-800">
+            <Link href="/sign-in" className="text-teal-400 hover:text-teal-600">
               Sign in
             </Link>
           </p>
