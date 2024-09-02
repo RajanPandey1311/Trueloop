@@ -86,10 +86,14 @@ function UserDashboard() {
 
   useEffect(() => {
     if (!session || !session.user) return;
-
-    fetchMessages();
-
-    fetchAcceptMessages();
+    const hasReloaded = sessionStorage.getItem('hasReloaded');
+    if (!hasReloaded) {
+      sessionStorage.setItem('hasReloaded', 'true');
+      window.location.reload();
+    } else {
+      fetchMessages();
+      fetchAcceptMessages();
+    }
   }, [session, setValue, toast, fetchAcceptMessages, fetchMessages]);
 
   const handleSwitchChange = async () => {
