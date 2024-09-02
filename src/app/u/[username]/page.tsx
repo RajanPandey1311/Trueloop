@@ -168,7 +168,7 @@ export default function SendMessage() {
                   className="mb-2"
                   onClick={() => handleMessageClick(message)}
                 >
-                  {message}
+                  <span className="overflow-x-auto">{message}</span>
                 </Button>
               ))
             )}
