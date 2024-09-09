@@ -148,7 +148,7 @@ export default function SendMessage() {
                 Please wait
               </div>
             ) : (
-              "Suggest Messages"
+              "Suggest AI Generated Messages"
             )}
           </Button>
           <p>Click on any message below to select it.</p>
