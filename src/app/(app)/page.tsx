@@ -44,7 +44,7 @@ const chartConfig = {
 export default function Home() {
   return (
     <div>
-      <main className="flex-grow flex flex-col items-center min-h-[40vh] justify-center px-4 md:px-24 py-12 bg-teal-900 text-white">
+      <main className="flex-grow flex flex-col items-center min-h-screen justify-center px-4 md:px-24 py-12 bg-teal-900 text-white">
         <section className="text-center mb-4 md:mb-2">
           <h1 className="text-3xl md:text-5xl font-bold">
             Dive into the World of True and Anonymous Feedback.
