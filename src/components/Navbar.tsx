@@ -8,7 +8,7 @@ import { User } from 'next-auth';
 
 function Navbar() {
   const { data: session } = useSession();
-  const user : User = session?.user as User
+  const user: User = session?.user as User
 
   return (
     <nav className="p-4 md:p-6 shadow-md bg-teal-700 text-white">
@@ -21,6 +21,11 @@ function Navbar() {
             <span className="mr-4 text-3xl">
               Welcome, <span className='capitalize'>{user?.username || user?.email}</span>
             </span>
+            <Link href='/dashboard'>
+              <Button className="w-full md:w-auto bg-slate-100 text-black mr-1" variant='outline'>
+                Dashboard
+              </Button>
+            </Link>
             <Button onClick={() => signOut()} className="w-full md:w-auto bg-slate-100 text-black" variant='outline'>
               Logout
             </Button>

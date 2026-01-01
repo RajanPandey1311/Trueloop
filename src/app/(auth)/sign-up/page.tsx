@@ -125,11 +125,10 @@ export default function SignUpForm() {
                   {isCheckingUsername && <Loader2 className="animate-spin" />}
                   {!isCheckingUsername && usernameMessage && (
                     <p
-                      className={`text-sm ${
-                        usernameMessage === 'Username is unique'
+                      className={`text-sm ${usernameMessage === 'Username is unique'
                           ? 'text-green-500'
                           : 'text-red-500'
-                      }`}
+                        }`}
                     >
                       {usernameMessage}
                     </p>
@@ -157,14 +156,14 @@ export default function SignUpForm() {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Password</FormLabel>
-                  <Input type="password" {...field} name="password" placeholder='password'/>
+                  <Input type="password" {...field} name="password" placeholder='password' />
                   <FormMessage />
                 </FormItem>
               )}
             />
             <Button type="submit" className='w-full' disabled={isSubmitting}>
               {isSubmitting ? (
-                <div>
+                <div className='flex items-center'>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                   Please wait
                 </div>

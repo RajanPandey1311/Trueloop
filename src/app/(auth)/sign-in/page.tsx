@@ -17,10 +17,12 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/components/ui/use-toast';
 import { signInSchema } from '@/schemas/signInSchema';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { Loader2 } from 'lucide-react';
 
 export default function SignInForm() {
   const router = useRouter();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const form = useForm<z.infer<typeof signInSchema>>({
     resolver: zodResolver(signInSchema),
@@ -31,7 +33,7 @@ export default function SignInForm() {
   });
 
   const { toast } = useToast();
-  
+
   useEffect(() => {
     const hasReloaded = sessionStorage.getItem('signinHasReloaded');
     if (!hasReloaded) {
@@ -41,6 +43,9 @@ export default function SignInForm() {
   }, []);
 
   const onSubmit = async (data: z.infer<typeof signInSchema>) => {
+    if (isSubmitting || !data.password || !data.identifier) return;
+
+    setIsSubmitting(true);
     const result = await signIn('credentials', {
       redirect: false,
       identifier: data.identifier,
@@ -66,6 +71,7 @@ export default function SignInForm() {
     if (result?.url) {
       router.replace('/dashboard');
     }
+    setIsSubmitting(false);
   };
 
   return (
@@ -101,7 +107,14 @@ export default function SignInForm() {
                 </FormItem>
               )}
             />
-            <Button className='w-full' type="submit">Sign In</Button>
+            <Button className='w-full' type="submit" disabled={isSubmitting}> {isSubmitting ? (
+              <div className='flex items-center'>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                Please wait
+              </div>
+            ) : (
+              'Sign In'
+            )}</Button>
           </form>
         </Form>
         <div className="text-center mt-4">
